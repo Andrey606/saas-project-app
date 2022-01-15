@@ -52,7 +52,7 @@ end
 
 group :production do
   # Use sqlite3 as the database for Active Record
-  gem 'pg'
+  gem 'pg' 
 end
 
 group :development do
