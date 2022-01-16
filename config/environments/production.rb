@@ -12,6 +12,19 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  # my mailer settings
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'andrews-saas-project-app-6.herokuapp.com', protocol: 'https' }
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'andreykuluev96@gmail.com',
+    :password             => 'chamolhweopwwsae', # in google settings created this password for phot-app
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
