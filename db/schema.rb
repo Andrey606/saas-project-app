@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_134648) do
+ActiveRecord::Schema.define(version: 2022_01_23_150346) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2022_01_23_134648) do
     t.string "domain"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_projects_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +40,5 @@ ActiveRecord::Schema.define(version: 2022_01_23_134648) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects", "accounts"
 end
