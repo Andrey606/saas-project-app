@@ -11,3 +11,11 @@ rails db:create db:migrate
 # gems:
 - devise
 - milia
+- dotenv-rails
+- byebug
+- stripe
+- pg
+- sqlite
+- carrierwave # image uploader gem
+- mini_magick # image resizing gem
+- fog, fog-aws # to working with images in production
