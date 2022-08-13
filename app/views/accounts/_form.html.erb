@@ -1,32 +1,55 @@
-<%= form_with(model: account) do |form| %>
-  <% if account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+<%= form_for @account, :html => { :class => "form-horizontal account" } do |f| %>
 
-      <ul>
-        <% account.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+  <% if @account.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @account.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :subdomain, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :subdomain, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:subdomain) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :domain, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :domain, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:domain) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :plan, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :plan, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:plan) %>
   </div>
 
-  <div class="field">
-    <%= form.label :subdomain %>
-    <%= form.text_field :subdomain %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                accounts_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :domain %>
-    <%= form.text_field :domain %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

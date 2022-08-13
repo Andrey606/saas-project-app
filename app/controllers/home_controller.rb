@@ -4,9 +4,7 @@ class HomeController < ApplicationController
     # byebug
     @tenant = nil
     if current_user
-      # byebug
-      # current_account = Account.find_it
-      # set_current_tenant(current_account)
+      # set_current_tenant(current_user.account.name)
     end
   end
 end

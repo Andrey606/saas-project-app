@@ -19,3 +19,6 @@ rails db:create db:migrate
 - carrierwave # image uploader gem
 - mini_magick # image resizing gem
 - fog, fog-aws # to working with images in production
+
+# subdomain for localhost
+http://gorails.lvh.me:3000/

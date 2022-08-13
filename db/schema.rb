@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_150346) do
+ActiveRecord::Schema.define(version: 2022_01_24_212912) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2022_01_23_150346) do
     t.string "domain"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "plan"
+  end
+
+  create_table "accounts_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "account_id", null: false
   end
 
   create_table "projects", force: :cascade do |t|
